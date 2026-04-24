@@ -204,6 +204,35 @@ Run with coverage:
 mix test --cover
 ```
 
+## Performance
+
+ElxVAST is optimized for high-performance validation with excellent throughput:
+
+- **10K+ validations/sec** for typical VAST documents
+- **30K+ validations/sec** for invalid document detection  
+- **Sub-millisecond** validation times for most documents
+- **Linear memory scaling** with document complexity
+
+### Benchmarks
+
+Run performance benchmarks to measure validation speed:
+
+```bash
+# Quick benchmarks (recommended for CI)
+mix benchmark --quick
+
+# Full benchmark suite
+mix benchmark
+
+# Validation benchmarks only
+mix benchmark --validation-only
+
+# Type validation benchmarks only  
+mix benchmark --types-only
+```
+
+See [`benchmark/PERFORMANCE_SUMMARY.md`](benchmark/PERFORMANCE_SUMMARY.md) for detailed performance analysis and [`benchmark/README.md`](benchmark/README.md) for benchmarking guide.
+
 ## VAST 4.1 Compliance
 
 This validator implements the complete VAST 4.1 specification including:
