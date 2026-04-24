@@ -134,7 +134,7 @@ defmodule ElxVastTest do
     end
 
     test "handles non-existent file" do
-      assert {:error, reason} = ElxVast.validate_file("/non/existent/file.xml")
+      assert {:error, reason} = ElxVast.validate_file("non_existent_file.xml")
       assert reason =~ "File read error"
     end
   end
