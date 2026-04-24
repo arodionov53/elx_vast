@@ -3,7 +3,7 @@
 IO.puts("🎬 ElxVAST - VAST 4.1 XML Validator")
 IO.puts("==================================")
 
-IO.puts("\n📍 Project Location: /Users/a.rodionov/prj/elixiring/elx_vast")
+IO.puts("\n📍 Current Directory: #{File.cwd!()}")
 
 IO.puts("\n🏗️  Project Structure:")
 IO.puts("  lib/elx_vast.ex              - Main validator module")
@@ -22,7 +22,7 @@ IO.puts("  ✅ MediaFile and creative validation")
 IO.puts("  ✅ Tracking event validation")
 
 IO.puts("\n🚀 Quick Start:")
-IO.puts("  1. cd /Users/a.rodionov/prj/elixiring/elx_vast")
+IO.puts("  1. cd <project_directory>")
 IO.puts("  2. mix deps.get")
 IO.puts("  3. iex -S mix")
 IO.puts("  4. ElxVast.validate(your_vast_xml)")
