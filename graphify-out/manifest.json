@@ -1,0 +1,236 @@
+{
+  ".formatter.exs": {
+    "mtime": 1791388445.0500996,
+    "seen": 1791389265.6000419,
+    "ast_hash": "5929c731d5bca5967e0fb415b7fa9a01",
+    "semantic_hash": "5929c731d5bca5967e0fb415b7fa9a01"
+  },
+  "benchmark/vast_benchmark.exs": {
+    "mtime": 1791388445.0512674,
+    "seen": 1791389265.600045,
+    "ast_hash": "e675337f8cc3abfb004ad66b08bc253f",
+    "semantic_hash": "e675337f8cc3abfb004ad66b08bc253f"
+  },
+  "demo.exs": {
+    "mtime": 1791388445.0515628,
+    "seen": 1791389265.6000462,
+    "ast_hash": "2153b8d38533ddf6b061ada10ed136d1",
+    "semantic_hash": "2153b8d38533ddf6b061ada10ed136d1"
+  },
+  "examples/usage_example.exs": {
+    "mtime": 1791388445.051791,
+    "seen": 1791389265.600047,
+    "ast_hash": "bb738014938a8a531c4c998aa0834b4f",
+    "semantic_hash": "bb738014938a8a531c4c998aa0834b4f"
+  },
+  "lib/elx_vast.ex": {
+    "mtime": 1791398295.1119246,
+    "seen": 1791399773.808651,
+    "ast_hash": "d1f64ef622bc1118f35816cc1b71d38e",
+    "semantic_hash": "d1f64ef622bc1118f35816cc1b71d38e"
+  },
+  "lib/elx_vast/elements.ex": {
+    "mtime": 1791398678.9702983,
+    "seen": 1791399773.808651,
+    "ast_hash": "2d58e34c0693cb93146245c4951809f4",
+    "semantic_hash": "2d58e34c0693cb93146245c4951809f4"
+  },
+  "lib/elx_vast/types.ex": {
+    "mtime": 1791398366.8995826,
+    "seen": 1791399773.808652,
+    "ast_hash": "fca1ffac40fcdc558dbfd9c011a77ae5",
+    "semantic_hash": "fca1ffac40fcdc558dbfd9c011a77ae5"
+  },
+  "lib/elx_vast/validators.ex": {
+    "mtime": 1791398699.7444751,
+    "seen": 1791399773.808653,
+    "ast_hash": "eec42c5b120c049e81897e716866c577",
+    "semantic_hash": "eec42c5b120c049e81897e716866c577"
+  },
+  "lib/mix/tasks/benchmark.ex": {
+    "mtime": 1791388445.0529768,
+    "seen": 1791389265.60005,
+    "ast_hash": "dad6e3be679c348d4aaf2538a3916edb",
+    "semantic_hash": "dad6e3be679c348d4aaf2538a3916edb"
+  },
+  "mix.exs": {
+    "mtime": 1791398730.6016946,
+    "seen": 1791399773.808654,
+    "ast_hash": "9b4377cca1105752519a2c72440b3aca",
+    "semantic_hash": "9b4377cca1105752519a2c72440b3aca"
+  },
+  "test/elx_vast/types_test.exs": {
+    "mtime": 1791398371.9271343,
+    "seen": 1791399773.808655,
+    "ast_hash": "f6482f4aa71ba2e1eea52d7a5bc9050c",
+    "semantic_hash": "f6482f4aa71ba2e1eea52d7a5bc9050c"
+  },
+  "test/elx_vast_test.exs": {
+    "mtime": 1791398708.9728608,
+    "seen": 1791399773.808656,
+    "ast_hash": "65839881c4adbce296f0db9dbb6cb2bc",
+    "semantic_hash": "65839881c4adbce296f0db9dbb6cb2bc"
+  },
+  "test/test_helper.exs": {
+    "mtime": 1791398316.8530107,
+    "seen": 1791399773.808656,
+    "ast_hash": "f7a69bac97bd1ffbc0ec9ada05707703",
+    "semantic_hash": "f7a69bac97bd1ffbc0ec9ada05707703"
+  },
+  "CHANGELOG.md": {
+    "mtime": 1791388445.0503595,
+    "seen": 1791389265.600053,
+    "ast_hash": "ff52b5279b96d3ca5867f329d4e48643",
+    "semantic_hash": "ff52b5279b96d3ca5867f329d4e48643"
+  },
+  "README.md": {
+    "mtime": 1791398767.0045602,
+    "seen": 1791399773.808665,
+    "ast_hash": "b758ff0ef573e34381dcbfed73579ec7",
+    "semantic_hash": "b758ff0ef573e34381dcbfed73579ec7"
+  },
+  "benchmark/PERFORMANCE_SUMMARY.md": {
+    "mtime": 1791388445.0509849,
+    "seen": 1791389265.600054,
+    "ast_hash": "bceb621ea4abfc581358da7c9a587584",
+    "semantic_hash": "bceb621ea4abfc581358da7c9a587584"
+  },
+  "benchmark/README.md": {
+    "mtime": 1791388445.0511105,
+    "seen": 1791389265.600055,
+    "ast_hash": "88047834fc25df222187edfc68ec82b3",
+    "semantic_hash": "88047834fc25df222187edfc68ec82b3"
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1791398976.042287,
+    "seen": 1791399773.8086421,
+    "ast_hash": "b5f6eb7ee01985f11660c6920752f551",
+    "semantic_hash": "b5f6eb7ee01985f11660c6920752f551"
+  },
+  ".claude/commands/opsx/apply.md": {
+    "mtime": 1791393422.3773413,
+    "seen": 1791399773.808657,
+    "ast_hash": "a957d7a72774f092be25b23a915c89a7",
+    "semantic_hash": "a957d7a72774f092be25b23a915c89a7"
+  },
+  ".claude/commands/opsx/archive.md": {
+    "mtime": 1791393422.3789694,
+    "seen": 1791399773.808658,
+    "ast_hash": "87923b13180e4faa88b6a8a8d04b7751",
+    "semantic_hash": "87923b13180e4faa88b6a8a8d04b7751"
+  },
+  ".claude/commands/opsx/explore.md": {
+    "mtime": 1791393422.3769765,
+    "seen": 1791399773.8086588,
+    "ast_hash": "734b2313c127092244077dcba14bf868",
+    "semantic_hash": "734b2313c127092244077dcba14bf868"
+  },
+  ".claude/commands/opsx/propose.md": {
+    "mtime": 1791393422.379532,
+    "seen": 1791399773.8086588,
+    "ast_hash": "a9570540fdf1a5d22073478705f797f5",
+    "semantic_hash": "a9570540fdf1a5d22073478705f797f5"
+  },
+  ".claude/commands/opsx/sync.md": {
+    "mtime": 1791393422.3783638,
+    "seen": 1791399773.80866,
+    "ast_hash": "026755855f5363483763efc5a2b73e15",
+    "semantic_hash": "026755855f5363483763efc5a2b73e15"
+  },
+  ".claude/commands/opsx/update.md": {
+    "mtime": 1791393422.3777375,
+    "seen": 1791399773.808661,
+    "ast_hash": "36ac8697688d9cb41e65b5b080d886cf",
+    "semantic_hash": "36ac8697688d9cb41e65b5b080d886cf"
+  },
+  ".claude/skills/openspec-apply-change/SKILL.md": {
+    "mtime": 1791393422.373667,
+    "seen": 1791399773.808661,
+    "ast_hash": "fa7e3752d62f50f49b1850878d19a3d6",
+    "semantic_hash": "fa7e3752d62f50f49b1850878d19a3d6"
+  },
+  ".claude/skills/openspec-archive-change/SKILL.md": {
+    "mtime": 1791393422.3754332,
+    "seen": 1791399773.808662,
+    "ast_hash": "35372ec57ea4487053b488b735fb8b4b",
+    "semantic_hash": "35372ec57ea4487053b488b735fb8b4b"
+  },
+  ".claude/skills/openspec-explore/SKILL.md": {
+    "mtime": 1791393422.373158,
+    "seen": 1791399773.8086631,
+    "ast_hash": "07a7a581c2646e3c126b3d250a6962af",
+    "semantic_hash": "07a7a581c2646e3c126b3d250a6962af"
+  },
+  ".claude/skills/openspec-propose/SKILL.md": {
+    "mtime": 1791393422.3758674,
+    "seen": 1791399773.8086631,
+    "ast_hash": "72acfb3a408ba86909c8c9a3854e2e22",
+    "semantic_hash": "72acfb3a408ba86909c8c9a3854e2e22"
+  },
+  ".claude/skills/openspec-sync-specs/SKILL.md": {
+    "mtime": 1791393422.3748863,
+    "seen": 1791399773.808664,
+    "ast_hash": "bb4faf9753898e815adac3f5641b0107",
+    "semantic_hash": "bb4faf9753898e815adac3f5641b0107"
+  },
+  ".claude/skills/openspec-update-change/SKILL.md": {
+    "mtime": 1791393422.3743887,
+    "seen": 1791399773.808664,
+    "ast_hash": "94f3f60985dcb07772bc27fb081c2f90",
+    "semantic_hash": "94f3f60985dcb07772bc27fb081c2f90"
+  },
+  "openspec/changes/archive/2026-10-07-add-vast-43-support/.openspec.yaml": {
+    "mtime": 1791394166.3595574,
+    "seen": 1791399773.8086662,
+    "ast_hash": "e486aeec6a674b4225d6ba098e6d3bf8",
+    "semantic_hash": "e486aeec6a674b4225d6ba098e6d3bf8"
+  },
+  "openspec/changes/archive/2026-10-07-add-vast-43-support/design.md": {
+    "mtime": 1791398067.0922241,
+    "seen": 1791399773.8086662,
+    "ast_hash": "4ce3b25f123e8e3a16e086f57823960d",
+    "semantic_hash": "4ce3b25f123e8e3a16e086f57823960d"
+  },
+  "openspec/changes/archive/2026-10-07-add-vast-43-support/proposal.md": {
+    "mtime": 1791394236.501356,
+    "seen": 1791399773.808667,
+    "ast_hash": "0e872b1b713aff652a37844ef9b4d767",
+    "semantic_hash": "0e872b1b713aff652a37844ef9b4d767"
+  },
+  "openspec/changes/archive/2026-10-07-add-vast-43-support/specs/vast-43-elements/spec.md": {
+    "mtime": 1791398033.3905377,
+    "seen": 1791399773.808668,
+    "ast_hash": "93a3b890aecf2e7f1a24ca835f962cd5",
+    "semantic_hash": "93a3b890aecf2e7f1a24ca835f962cd5"
+  },
+  "openspec/changes/archive/2026-10-07-add-vast-43-support/specs/vast-version-support/spec.md": {
+    "mtime": 1791398017.4136963,
+    "seen": 1791399773.808668,
+    "ast_hash": "3e1c3b82f3a2d8f3f6b85ad7b2adbb4e",
+    "semantic_hash": "3e1c3b82f3a2d8f3f6b85ad7b2adbb4e"
+  },
+  "openspec/changes/archive/2026-10-07-add-vast-43-support/tasks.md": {
+    "mtime": 1791398895.2071097,
+    "seen": 1791399773.8086689,
+    "ast_hash": "6cd1acbbb367876ad3113541669259db",
+    "semantic_hash": "6cd1acbbb367876ad3113541669259db"
+  },
+  "openspec/config.yaml": {
+    "mtime": 1791393422.3803444,
+    "seen": 1791399773.80867,
+    "ast_hash": "500a0a16229f8fd0848dc7cff85d21e9",
+    "semantic_hash": "500a0a16229f8fd0848dc7cff85d21e9"
+  },
+  "openspec/specs/vast-43-elements/spec.md": {
+    "mtime": 1791399161.8070686,
+    "seen": 1791399773.80867,
+    "ast_hash": "a2774a0661bf3a7d9986b692994d89c1",
+    "semantic_hash": "a2774a0661bf3a7d9986b692994d89c1"
+  },
+  "openspec/specs/vast-version-support/spec.md": {
+    "mtime": 1791399139.610255,
+    "seen": 1791399773.808671,
+    "ast_hash": "5231439ee651d32d0bb85d9b241d2931",
+    "semantic_hash": "5231439ee651d32d0bb85d9b241d2931"
+  }
+}
