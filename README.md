@@ -1,14 +1,16 @@
-# ElxVAST - VAST 4.1 XML Validator for Elixir
+# ElxVAST - VAST 4.1–4.3 XML Validator for Elixir
 
-A comprehensive Elixir library for validating VAST (Video Ad Serving Template) 4.1 XML documents according to the IAB VAST specification.
+A comprehensive Elixir library for validating VAST (Video Ad Serving Template) 4.1–4.3 XML documents according to the IAB VAST specification.
 
 ## Features
 
-- **Complete VAST 4.1 Support**: Validates all VAST 4.1 elements and attributes
-- **Schema-Based Validation**: Built from the official VAST 4.1 XSD schema
+- **VAST 4.1–4.3 Support**: Validates all VAST 4.1, 4.2, and 4.3 elements and attributes
+- **Schema-Based Validation**: Built from the official VAST XSD schemas
 - **Detailed Error Messages**: Provides specific error information for failed validations
 - **Type Safety**: Comprehensive data type validation (URIs, time formats, MIME types, etc.)
 - **Element Validation**: Validates complex element relationships and requirements
+- **VAST 4.2/4.3 Elements**: ClosedCaptionFiles, InteractiveCreativeFile, expanded tracking events
+- **Ad Verification**: Validates JavaScriptResource and ExecutableResource attributes
 - **Performance Optimized**: Uses SweetXml for efficient XML parsing
 
 ## Installation
@@ -101,7 +103,7 @@ error_vast = """
 
 ## Validation Rules
 
-The validator enforces all VAST 4.1 specification rules including:
+The validator enforces VAST 4.1–4.3 specification rules including:
 
 ### Document Structure
 - Root `<VAST>` element with required version attribute
@@ -127,10 +129,20 @@ The validator enforces all VAST 4.1 specification rules including:
 - Integer validation for dimensions and bitrates
 - Enumerated values (delivery methods, event types, etc.)
 
+### VAST 4.2/4.3 Elements
+- `ClosedCaptionFiles` / `ClosedCaptionFile` with language and type attributes
+- `InteractiveCreativeFile` with type and optional apiFramework attributes
+- Expanded tracking events: `interactiveStart`, `interactiveEnd`
+- Expanded verification events: `loaded`, `sessionStarted`, `sessionFinished`
+
 ### Tracking Events
 - Valid event names: start, firstQuartile, midpoint, thirdQuartile, complete, etc.
 - Progress events require offset attribute
 - Proper URI format for tracking URLs
+
+### Ad Verification Resources
+- `JavaScriptResource`: required `apiFramework`, optional `browserOptional`
+- `ExecutableResource`: required `apiFramework`, optional `type`
 
 ## API Reference
 
@@ -162,7 +174,7 @@ Successful validation returns:
 
 ```elixir
 %{
-  version: "4.1",           # VAST version
+  version: "4.3",           # VAST version (4.1, 4.2, or 4.3)
   ads: [ad_elements],       # List of parsed Ad elements
   errors: [error_elements], # List of parsed Error elements  
   valid: true               # Validation status
@@ -233,17 +245,18 @@ mix benchmark --types-only
 
 See [`benchmark/PERFORMANCE_SUMMARY.md`](benchmark/PERFORMANCE_SUMMARY.md) for detailed performance analysis and [`benchmark/README.md`](benchmark/README.md) for benchmarking guide.
 
-## VAST 4.1 Compliance
+## VAST 4.1–4.3 Compliance
 
-This validator implements the complete VAST 4.1 specification including:
+This validator implements the VAST 4.1–4.3 specifications including:
 
-- ✅ Root VAST element validation
+- ✅ Root VAST element validation (versions 4.1, 4.2, 4.3)
 - ✅ Ad element validation (InLine and Wrapper)
 - ✅ Creative element validation (Linear, NonLinear, Companion)
-- ✅ MediaFile validation with all attributes
-- ✅ Tracking event validation
+- ✅ MediaFile validation with all attributes (including `mediaType`)
+- ✅ ClosedCaptionFiles and InteractiveCreativeFile validation
+- ✅ Tracking event validation (including interactive events)
 - ✅ Impression and error URL validation
-- ✅ AdVerifications support
+- ✅ AdVerifications with resource attribute validation
 - ✅ Pricing model validation
 - ✅ Category and survey validation
 - ✅ Icon and extension support
@@ -274,10 +287,11 @@ MIT License - see LICENSE file for details.
 
 ## References
 
-- [IAB VAST 4.1 Specification](https://iabtechlab.com/standards/vast/)
+- [IAB VAST Specification](https://iabtechlab.com/standards/vast/)
 - [VAST 4.1 XSD Schema](https://github.com/InteractiveAdvertisingBureau/VAST/blob/main/vast4_1/vast_4.1.xsd)
+- [VAST 4.3 XSD Schema](https://github.com/InteractiveAdvertisingBureau/VAST/blob/main/vast4_3/vast_4.3.xsd)
 
 ## Project History
 
-ElxVAST is a comprehensive VAST validator built from the official VAST 4.1 XSD schema. It provides production-ready validation with detailed error reporting for all aspects of VAST 4.1 compliance.
+ElxVAST is a comprehensive VAST validator built from the official VAST XSD schemas. It provides production-ready validation with detailed error reporting for all aspects of VAST 4.1–4.3 compliance.
 

@@ -27,8 +27,8 @@ defmodule ElxVast.MixProject do
 
   defp description do
     """
-    A comprehensive VAST (Video Ad Serving Template) 4.1 XML validator for Elixir.
-    Validates VAST documents according to the IAB VAST 4.1 specification with
+    A comprehensive VAST (Video Ad Serving Template) 4.1–4.3 XML validator for Elixir.
+    Validates VAST documents according to the IAB VAST 4.1–4.3 specifications with
     detailed error reporting and complete schema compliance.
     """
   end

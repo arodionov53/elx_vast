@@ -1,9 +1,9 @@
 defmodule ElxVast.Types do
   @moduledoc """
-  Type validation functions for VAST 4.1 data types.
+  Type validation functions for VAST 4.1–4.3 data types.
 
   This module contains validation functions for various data types
-  defined in the VAST 4.1 XSD schema.
+  defined in the VAST 4.1–4.3 XSD schemas.
   """
 
   @doc """
@@ -171,13 +171,16 @@ defmodule ElxVast.Types do
     "firstQuartile", "midpoint", "thirdQuartile", "complete",
     "progress", "closeLinear", "creativeView", "acceptInvitation",
     "adExpand", "adCollapse", "minimize", "close",
-    "overlayViewDuration", "otherAdInteraction"
+    "overlayViewDuration", "otherAdInteraction",
+    "interactiveStart", "interactiveEnd"
   ], do: true
   def valid_tracking_event?(_), do: false
 
   @doc """
   Validates verification tracking event names.
   """
-  def valid_verification_event?(event) when event == "verificationNotExecuted", do: true
+  def valid_verification_event?(event) when event in [
+    "verificationNotExecuted", "loaded", "sessionStarted", "sessionFinished"
+  ], do: true
   def valid_verification_event?(_), do: false
 end

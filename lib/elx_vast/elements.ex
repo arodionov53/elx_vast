@@ -1,6 +1,6 @@
 defmodule ElxVast.Elements do
   @moduledoc """
-  Element-specific validation functions for VAST 4.1 elements.
+  Element-specific validation functions for VAST 4.1–4.3 elements.
 
   This module contains validation logic for individual VAST elements
   such as Ad, InLine, Wrapper, Creative, etc.
@@ -259,13 +259,22 @@ defmodule ElxVast.Elements do
   end
 
   defp validate_js_resource(js_resource) do
+    with {:ok, _} <- Validators.validate_required_attribute(js_resource, "apiFramework"),
+         :ok <- Validators.validate_optional_attribute(js_resource, "browserOptional", &Types.valid_boolean?/1),
+         :ok <- validate_js_resource_uri(js_resource) do
+      :ok
+    end
+  end
+
+  defp validate_js_resource_uri(js_resource) do
     case xpath(js_resource, ~x"./text()"s) do
       nil -> {:error, "Missing JavaScriptResource URI"}
       uri ->
-        if Types.valid_uri?(uri) do
+        trimmed = String.trim(uri)
+        if Types.valid_uri?(trimmed) do
           :ok
         else
-          {:error, "Invalid JavaScriptResource URI: #{uri}"}
+          {:error, "Invalid JavaScriptResource URI: #{trimmed}"}
         end
     end
   end
@@ -281,13 +290,22 @@ defmodule ElxVast.Elements do
   end
 
   defp validate_exec_resource(exec_resource) do
+    with {:ok, _} <- Validators.validate_required_attribute(exec_resource, "apiFramework"),
+         :ok <- Validators.validate_optional_attribute(exec_resource, "type", &is_binary/1),
+         :ok <- validate_exec_resource_uri(exec_resource) do
+      :ok
+    end
+  end
+
+  defp validate_exec_resource_uri(exec_resource) do
     case xpath(exec_resource, ~x"./text()"s) do
       nil -> {:error, "Missing ExecutableResource URI"}
       uri ->
-        if Types.valid_uri?(uri) do
+        trimmed = String.trim(uri)
+        if Types.valid_uri?(trimmed) do
           :ok
         else
-          {:error, "Invalid ExecutableResource URI: #{uri}"}
+          {:error, "Invalid ExecutableResource URI: #{trimmed}"}
         end
     end
   end
@@ -398,6 +416,14 @@ defmodule ElxVast.Elements do
   end
 
   defp validate_linear_inline(linear_element) do
+    with :ok <- validate_linear_inline_base(linear_element),
+         :ok <- validate_optional_closed_caption_files(linear_element),
+         :ok <- validate_optional_interactive_creative_file(linear_element) do
+      :ok
+    end
+  end
+
+  defp validate_linear_inline_base(linear_element) do
     with {:ok, _} <- validate_duration_element(linear_element),
          :ok <- validate_media_files(linear_element),
          :ok <- validate_linear_tracking_events(linear_element),
@@ -573,6 +599,99 @@ defmodule ElxVast.Elements do
           :ok
         else
           {:error, "Invalid CustomClick URI: #{uri}"}
+        end
+    end
+  end
+
+  defp validate_optional_closed_caption_files(linear_element) do
+    case xpath(linear_element, ~x"./ClosedCaptionFiles") do
+      nil -> :ok
+      cc_files_element -> validate_closed_caption_files_element(cc_files_element)
+    end
+  end
+
+  defp validate_closed_caption_files_element(cc_files_element) do
+    cc_files = xpath(cc_files_element, ~x"./ClosedCaptionFile"l)
+
+    if length(cc_files) == 0 do
+      {:error, "ClosedCaptionFiles must contain at least one ClosedCaptionFile"}
+    else
+      cc_files
+      |> Enum.with_index()
+      |> Enum.reduce_while(:ok, fn {cc_file, _index}, :ok ->
+        case validate_closed_caption_file(cc_file) do
+          :ok -> {:cont, :ok}
+          error -> {:halt, error}
+        end
+      end)
+    end
+  end
+
+  defp validate_closed_caption_file(cc_file) do
+    with {:ok, _} <- Validators.validate_required_attribute(cc_file, "language"),
+         {:ok, type_value} <- Validators.validate_required_attribute(cc_file, "type"),
+         :ok <- validate_cc_mime_type(type_value),
+         {:ok, _uri} <- validate_cc_file_uri(cc_file) do
+      :ok
+    end
+  end
+
+  defp validate_cc_mime_type(mime_type) do
+    if Types.valid_mime_type?(mime_type) do
+      :ok
+    else
+      {:error, "Invalid ClosedCaptionFile MIME type: #{mime_type}"}
+    end
+  end
+
+  defp validate_cc_file_uri(cc_file) do
+    case xpath(cc_file, ~x"./text()"s) do
+      nil -> {:error, "Missing ClosedCaptionFile URI"}
+      "" -> {:error, "Missing ClosedCaptionFile URI"}
+      uri ->
+        trimmed = String.trim(uri)
+        if Types.valid_uri?(trimmed) do
+          {:ok, trimmed}
+        else
+          {:error, "Invalid ClosedCaptionFile URI: #{trimmed}"}
+        end
+    end
+  end
+
+  defp validate_optional_interactive_creative_file(linear_element) do
+    case xpath(linear_element, ~x"./InteractiveCreativeFile") do
+      nil -> :ok
+      icf_element -> validate_interactive_creative_file_element(icf_element)
+    end
+  end
+
+  defp validate_interactive_creative_file_element(icf_element) do
+    with {:ok, type_value} <- Validators.validate_required_attribute(icf_element, "type"),
+         :ok <- validate_icf_mime_type(type_value),
+         :ok <- Validators.validate_optional_attribute(icf_element, "apiFramework", &is_binary/1),
+         {:ok, _uri} <- validate_icf_uri(icf_element) do
+      :ok
+    end
+  end
+
+  defp validate_icf_mime_type(mime_type) do
+    if Types.valid_mime_type?(mime_type) do
+      :ok
+    else
+      {:error, "Invalid InteractiveCreativeFile MIME type: #{mime_type}"}
+    end
+  end
+
+  defp validate_icf_uri(icf_element) do
+    case xpath(icf_element, ~x"./text()"s) do
+      nil -> {:error, "Missing InteractiveCreativeFile URI"}
+      "" -> {:error, "Missing InteractiveCreativeFile URI"}
+      uri ->
+        trimmed = String.trim(uri)
+        if Types.valid_uri?(trimmed) do
+          {:ok, trimmed}
+        else
+          {:error, "Invalid InteractiveCreativeFile URI: #{trimmed}"}
         end
     end
   end

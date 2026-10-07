@@ -68,6 +68,64 @@ defmodule VastValidatorTestHelper do
     """
   end
 
+  def valid_minimal_inline_vast_42() do
+    """
+    <?xml version="1.0" encoding="UTF-8"?>
+    <VAST version="4.2" xmlns="http://www.iab.com/VAST">
+      <Ad id="12345">
+        <InLine>
+          <AdSystem version="1.0">Test Ad System</AdSystem>
+          <AdServingId>test-serving-id-123</AdServingId>
+          <AdTitle>Test Video Ad</AdTitle>
+          <Impression><![CDATA[https://example.com/impression?id=123]]></Impression>
+          <Creatives>
+            <Creative>
+              <UniversalAdId idRegistry="Ad-ID">test-universal-id</UniversalAdId>
+              <Linear>
+                <Duration>00:00:30</Duration>
+                <MediaFiles>
+                  <MediaFile delivery="progressive" type="video/mp4" width="640" height="480">
+                    <![CDATA[https://example.com/media/video.mp4]]>
+                  </MediaFile>
+                </MediaFiles>
+              </Linear>
+            </Creative>
+          </Creatives>
+        </InLine>
+      </Ad>
+    </VAST>
+    """
+  end
+
+  def valid_minimal_inline_vast_43() do
+    """
+    <?xml version="1.0" encoding="UTF-8"?>
+    <VAST version="4.3" xmlns="http://www.iab.com/VAST">
+      <Ad id="12345">
+        <InLine>
+          <AdSystem version="1.0">Test Ad System</AdSystem>
+          <AdServingId>test-serving-id-123</AdServingId>
+          <AdTitle>Test Video Ad</AdTitle>
+          <Impression><![CDATA[https://example.com/impression?id=123]]></Impression>
+          <Creatives>
+            <Creative>
+              <UniversalAdId idRegistry="Ad-ID">test-universal-id</UniversalAdId>
+              <Linear>
+                <Duration>00:00:30</Duration>
+                <MediaFiles>
+                  <MediaFile delivery="progressive" type="video/mp4" width="640" height="480">
+                    <![CDATA[https://example.com/media/video.mp4]]>
+                  </MediaFile>
+                </MediaFiles>
+              </Linear>
+            </Creative>
+          </Creatives>
+        </InLine>
+      </Ad>
+    </VAST>
+    """
+  end
+
   def complex_valid_vast() do
     """
     <?xml version="1.0" encoding="UTF-8"?>

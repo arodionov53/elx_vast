@@ -1,18 +1,19 @@
 defmodule ElxVast do
   @moduledoc """
-  VAST 4.1 XML Validator based on IAB VAST specification.
+  VAST 4.1–4.3 XML Validator based on IAB VAST specification.
 
   ElxVast provides validation functionality for VAST (Video Ad Serving Template)
-  XML documents according to version 4.1 of the specification.
+  XML documents according to versions 4.1, 4.2, and 4.3 of the specification.
 
   ## Features
 
-  - Complete VAST 4.1 schema validation
+  - Complete VAST 4.1–4.3 schema validation
   - Detailed error reporting with specific validation failures
   - Type-safe validation for all data formats
   - Support for InLine and Wrapper ad types
   - Comprehensive tracking event validation
-  - MediaFile and creative validation
+  - MediaFile, ClosedCaptionFiles, and InteractiveCreativeFile validation
+  - Ad verification resource attribute validation
 
   ## Usage
 
@@ -40,8 +41,8 @@ defmodule ElxVast do
     - {:error, reason} on validation failure
 
   ## Examples
-      iex> {:ok, result} = ElxVast.validate("<VAST version='4.1'><Error>https://example.com/error</Error></VAST>"); result.version
-      "4.1"
+      iex> {:ok, result} = ElxVast.validate("<VAST version='4.3'><Error>https://example.com/error</Error></VAST>"); result.version
+      "4.3"
 
       iex> ElxVast.validate("<invalid>xml</invalid>")
       {:error, "Missing root VAST element"}
@@ -97,7 +98,8 @@ defmodule ElxVast do
             {:error, "Missing required version attribute"}
 
           not Validators.valid_version?(version) ->
-            {:error, "Invalid version: #{version}. Expected version 4.1 or compatible"}
+            supported = Validators.supported_versions() |> Enum.join(", ")
+            {:error, "Invalid version: #{version}. Expected version #{supported} or compatible"}
 
           true ->
             {:ok, {xml_doc, version}}

@@ -231,7 +231,10 @@ defmodule ElxVast.TypesTest do
       assert Types.valid_tracking_event?("resume")
       assert Types.valid_tracking_event?("skip")
       assert Types.valid_tracking_event?("creativeView")
+      assert Types.valid_tracking_event?("interactiveStart")
+      assert Types.valid_tracking_event?("interactiveEnd")
 
+      refute Types.valid_tracking_event?("notARealEvent")
       refute Types.valid_tracking_event?("invalid_event")
       refute Types.valid_tracking_event?("")
       refute Types.valid_tracking_event?(nil)
@@ -239,8 +242,12 @@ defmodule ElxVast.TypesTest do
 
     test "valid_verification_event?/1" do
       assert Types.valid_verification_event?("verificationNotExecuted")
+      assert Types.valid_verification_event?("loaded")
+      assert Types.valid_verification_event?("sessionStarted")
+      assert Types.valid_verification_event?("sessionFinished")
 
       refute Types.valid_verification_event?("start")
+      refute Types.valid_verification_event?("invalidVerificationEvent")
       refute Types.valid_verification_event?("")
       refute Types.valid_verification_event?(nil)
     end

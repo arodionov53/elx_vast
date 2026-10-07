@@ -1,6 +1,6 @@
 defmodule ElxVast.Validators do
   @moduledoc """
-  Higher-level validation functions for VAST 4.1 documents.
+  Higher-level validation functions for VAST 4.1–4.3 documents.
 
   This module contains validation logic that combines multiple checks
   and handles complex validation scenarios.
@@ -9,17 +9,22 @@ defmodule ElxVast.Validators do
   import SweetXml
   alias ElxVast.Types
 
-  @valid_versions ["4.1", "4.1.0", "4.1.1", "4.1.2"]
+  @supported_versions ["4.1", "4.2", "4.3"]
 
   @doc """
   Validates VAST version number.
+
+  Accepts versions 4.1, 4.2, and 4.3 (including patch variants like 4.1.0, 4.3.1).
   """
-  def valid_version?(version) when version in @valid_versions, do: true
   def valid_version?(version) when is_binary(version) do
-    # Allow versions that start with 4.1
-    String.starts_with?(version, "4.1")
+    Enum.any?(@supported_versions, &String.starts_with?(version, &1))
   end
   def valid_version?(_), do: false
+
+  @doc """
+  Returns the list of supported VAST version prefixes.
+  """
+  def supported_versions, do: @supported_versions
 
   @doc """
   Validates required attributes are present and non-empty.
@@ -116,6 +121,7 @@ defmodule ElxVast.Validators do
          :ok <- validate_optional_attribute(media_file, "maintainAspectRatio", &Types.valid_boolean?/1),
          :ok <- validate_optional_attribute(media_file, "fileSize", &Types.valid_positive_integer?/1),
          :ok <- validate_optional_attribute(media_file, "apiFramework", &is_binary/1),
+         :ok <- validate_optional_attribute(media_file, "mediaType", &is_binary/1),
          :ok <- validate_bitrate_consistency(media_file) do
       :ok
     end
